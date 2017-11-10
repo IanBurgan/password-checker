@@ -221,7 +221,7 @@ function randomWord() {
   var array = [];
 
   while (array.length < num) {
-    var temp = words[Math.floor(Math.random() * num)];
+    var temp = words[Math.floor(Math.random() * words.length)];
     if (array.indexOf(temp) < 0) {
       newHTML += temp + ' ';
       array.push(temp);
@@ -229,4 +229,42 @@ function randomWord() {
   }
 
   document.getElementById('randomwords').innerHTML = '<p>' + newHTML +'</p>';
+}
+
+/*
+SOURCE: http://passrequirements.com/list.php
+Instagram, ESPN, Amazon, Dropbox, hulu, linkedin: length >= 6
+Craigslist, google: length >= 8
+Github: at least 1 lowercase letter, 1 number, and 7 characters
+Ebay: 6 <= length <= 64, includes at least 1 number or symbol
+Facebook: length >= 6, includes at least 1 letter and symbol
+iTunes: length >= 8, at least 1 number, uppercase, lowercase letter, no spaces, cannot have same character 3 times in a row
+Microsoft: length >= 8, at least 2 uppercase, lowercase letters, numbers and symbols
+Netflix: 4 <= length <= 60
+NYTimes: 5 <= length <= 15
+*/
+function checkPassRequirements() {
+  var insta, espn, amazon, craigslist, dropbox, google, hulu, linkedin, github, ebay, facebook, itunes, microsoft, netflix, nytimes = false;
+  pw = document.getElementById('input').value;
+  
+  //TODO: github, ebay, facebook, itunes, microsoft
+  
+  if (pw.length >= 6) {
+    insta = true;
+    espn = true;
+    amazon = true;
+    dropbox = true;
+    hulu = true;
+    linkedin = true;
+  }
+  if (pw.length >= 8) {
+    craigslist = true;
+    google = true;
+  }
+  if (pw.length >= 4 && pw.length <= 60) {
+    netflix = true;
+  }
+  if (pw.length >= 5 && pw.length <= nytimes) {
+    nytimes = true;
+  }
 }
